@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+ 
+<html>
+<head>
+    <title>Spring Boot - AngularJs Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-resource.min.js"></script>
+    <script src="../js/controller.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    
+    
+</head>
+<body>
+
+ 
+<div class="container">
+ 
+  <h3 style="color:blue">Http AngularJs - GET/POST List Objects</h3>
+  
+  <div class="row col-md-6">
+  
+    <!-- ###################### -->
+    <!-- POST CONTROLLER -->
+    <!-- ###################### -->
+    <div ng-controller="postcontroller">
+      <form name="customerForm" ng-submit="saveTags()">
+        <!-- NAME -->
+        <div class="form-group">
+          <label for="id">id:</label>
+          <input type="number" class="form-control" id="id" placeholder="Enter ID" ng-model="formCust.id"/>
+        </div>
+        <!-- AGE -->
+        <div class="form-group">
+          <label for="speed">speed:</label>
+          <input type="number"  min="18" max="100" class="form-control" id="speed" placeholder="Enter speed" ng-model="formCust.speed"/>
+        </div>
+        <!-- ################### -->
+        <!-- ADDRESS -->
+        <!-- ################### -->
+        
+        <!-- STREET -->
+        <div class="form-group">
+          <label for="x">x:</label>
+          <input type="number" class="form-control" id="x" placeholder="Enter coordinates" ng-model="formCust.x"/>
+        </div>
+        <!-- POSTCODE -->
+        <div class="form-group">
+          <label for="y">y:</label>
+          <input type="number" class="form-control" id="y" placeholder="Enter coordinates" ng-model="formCust.y"/>
+        </div>
+        <div class="form-group">
+          <label for="z">z:</label>
+          <input type="number" class="form-control" id="z" placeholder="Enter coordinates" ng-model="formCust.z"/>
+        </div>
+        <button type="submit" class="btn btn-default">Add Tag</button>
+      </form>
+ 
+      <div class="table-responsive" ng-if="listTags.length">
+        <table class="table table-bordered table-hover">
+          <tr>
+            <th>id</th>
+            <th>speed</th>
+            <th>x</th>
+            <th>y</th>
+            <th>z</th>
+          </tr>
+          <tr ng-repeat="cust in listTags | orderBy : 'id'"
+            ng-class-even="'info'" ng-class-odd="'success'">
+            <td>{{ $index + 1 }}</td>
+            <td>{{ cust.id | uppercase}}</td>
+            <td>{{ cust.speed}}</td>
+            <td>{{ cust.x}}</td>
+            <td>{{ cust.y}}</td>
+            <td>{{ cust.z}}</td>
+            
+            
+           
+          </tr>
+        </table>
+        
+        
+      </div>
+      
+      <div style="margin:10px 0px 10px 0px;" ng-if="postDivAvailable">
+        <p style='background-color:#7FA7B0; color:white; padding:20px 20px 20px 20px'>
+          Post Successfully!
+        </p>
+      </div>
+      
+    </div>
+ 
+    <!-- ###################### -->
+    <!-- GET CONTROLLER -->
+    <!-- ###################### -->
+    
+    <div style="margin-top:5px" ng-controller="getcontroller">
+      <button ng-click="getfunction()" type="button" class="btn btn-default" style="margin:10px 0px 10px 0px;">Get All tags</button>
+      <div style="background-color:#67597E; color:white; padding:20px 20px 20px 20px" ng-if="getDivAvailable">
+        <ul>
+              <li ng-repeat="cust in response">{{"{id: " + cust.id + ", speed: " + cust.speed + 
+                                  ", x: " + cust.x + ",y: " + cust.y + ", z: " + cust.z + "}"}}</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+</body>
+</html>
