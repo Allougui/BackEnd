@@ -1,8 +1,10 @@
 package com.example.demo.model;
 
+
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "TAG")
+@NamedQuery(name = "Tag.getLastTag",query="SELECT t from TAG t order by t.id DESC")
 public class Tag {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

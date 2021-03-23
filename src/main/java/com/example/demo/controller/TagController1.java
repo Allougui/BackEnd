@@ -10,14 +10,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.springframework.http.ResponseEntity.ok;
 
-
+//this is the real controller
 @RestController
 @CrossOrigin
 @RequestMapping("/api/tag/")
@@ -47,6 +44,8 @@ public class TagController1 {
 				.orElseThrow(() -> new ResourceNotFoundException());
 	}
 
-
-
+	@GetMapping(path = "getLastTag")
+	public Optional<Tag> getLastTag() {
+		return this.tagRepository.getLastTag().stream().findFirst();
+	}
 }
