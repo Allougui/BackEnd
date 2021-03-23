@@ -3,7 +3,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
   
   $scope.getfunction = function($scope,$http){
     // get URL
-    var url = $location.absUrl() + "/Tag/getTag";
+    var url = $location.absUrl() + "http://localhost:8181/api/tag/allTags";
     
     // do getting
     $http.get('url').then(function (response) {

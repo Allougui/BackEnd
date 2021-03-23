@@ -8,16 +8,24 @@ public class Tag {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; 
 	
+
+	@Column (name="type")
+	private String type;
+	
 	@Column (name="x") 
-	private long x;
+	private double x;
 	
 	@Column (name="y")
-	private long y;
+	private double y;
 	@Column (name="z")
-	private long z; 
+	private double z; 
 	
-	@Column (name="speed")
-	private int speed;
+	@Column (name="quality")
+	private Long quality; 
+	
+	@Column (name="superFrameNumber")
+	private Long superFrameNumber; 
+	
 
 	public Long getId() {
 		return id;
@@ -27,50 +35,70 @@ public class Tag {
 		this.id = id;
 	}
 
-	public long getX() {
+	public double getX() {
 		return x;
 	}
 
-	public void setX(long x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
-	public long getY() {
+	public double getY() {
 		return y;
 	}
 
-	public void setY(long y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 
-	public long getZ() {
+	public double getZ() {
 		return z;
 	}
 
-	public void setZ(long z) {
+	public void setZ(double z) {
 		this.z = z;
 	}
 
-	public int getSpeed() {
-		return speed;
+	public String getType() {
+		return type;
 	}
 
-	public void setSpeed(int speed) {
-		this.speed = speed;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public Tag(long x, long y, long z, int speed) {
+	public Long getQuality() {
+		return quality;
+	}
+
+	public void setQuality(Long quality) {
+		this.quality = quality;
+	}
+
+	public Long getSuperFrameNumber() {
+		return superFrameNumber;
+	}
+
+	public void setSuperFrameNumber(Long superFrameNumber) {
+		this.superFrameNumber = superFrameNumber;
+	}
+
+	public Tag(Long id, String type, double x, double y, double z, Long quality, Long superFrameNumber) {
 		super();
+		this.id = id;
+		this.type = type;
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.speed = speed;
+		this.quality = quality;
+		this.superFrameNumber = superFrameNumber;
 	}
 
 	public Tag() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+
+	
 
 //
 //	public static int getId(Tag tag, Tag tag1) {
