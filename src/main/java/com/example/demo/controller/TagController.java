@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -30,18 +31,12 @@ public class TagController {
 	public TagDao dao ; 
     
 
-	/*@PostMapping(value = "/ExistTag")
-	public String ExistTag(@RequestBody List<Tag>tags) {
-		dao.saveAll(tags);
-		return "tag exists"; 
-	}
-	*/
 	@GetMapping("/getTag")
 	public List<Tag> getTag(){
-		return (List<Tag>) dao.findAll(); 
+		return (List<Tag>) dao.findAll();
 	}
-	
-	@RequestMapping("/addTag")
+
+	@PostMapping("/addTag")
 	public List saveTag(@ModelAttribute("tag")Tag tag,Model model) {
 		dao.save(tag); 
 		model.addAttribute("msg","Saved successfully.."); 
@@ -50,13 +45,9 @@ public class TagController {
 		return (List<Tag>) dao.findAll(); 
 		
 	}
-	
-	/*@RequestMapping("/getTagById")
-	
-	public String getTag(@RequestParam("id")int id,Model model) {
-		model.addAttribute("tags",
-				dao.findAll().stream().filter(u -> u.getId().equals(id)).findAny().get());
-		return "Home";
-		
-	}*/
+
+//	@GetMapping("/getLastTag")
+//	public List<Tag> getLastTag(){
+//		return (List<Tag>) dao.findAll().stream().min(Comparator.comparing(Tag::getId));
+//	}
 }

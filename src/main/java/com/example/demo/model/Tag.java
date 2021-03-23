@@ -1,11 +1,6 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 public class Tag {
@@ -64,9 +59,8 @@ public class Tag {
 		this.speed = speed;
 	}
 
-	public Tag(Long id, long x, long y, long z, int speed) {
+	public Tag(long x, long y, long z, int speed) {
 		super();
-		this.id = id;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -77,7 +71,9 @@ public class Tag {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
+//
+//	public static int getId(Tag tag, Tag tag1) {
+//		tag.getId()-tag1.getId();
+//	}
 }
